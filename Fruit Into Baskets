@@ -1,0 +1,21 @@
+class Solution {
+    public static int totalFruits(Integer[] arr) {
+        int n = arr.length;
+        int maxi = 0;
+        Map<Integer, Integer> m = new HashMap<>();
+        int l = 0, r = 0;
+        
+        while (r < n) {
+            m.put(arr[r], m.getOrDefault(arr[r], 0) + 1);
+            if (m.size() > 2) {
+                m.put(arr[l], m.get(arr[l]) - 1);
+                if (m.get(arr[l]) == 0) m.remove(arr[l]);
+                l++;
+            }
+            maxi = Math.max(maxi, r - l + 1);
+            r++;
+        }
+        
+        return maxi;
+    }
+}
