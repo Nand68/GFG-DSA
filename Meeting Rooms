@@ -1,0 +1,27 @@
+// Given an array arr[][] such that arr[i][0] is the starting time of ith meeting and arr[i][1] is the ending time of ith meeting, the task is to check if it is possible for a person to attend all the meetings such that he can attend only one meeting at a particular time.
+
+// Note: A person can attend a meeting if its starting time is greater than or equal to the previous meeting's ending time.
+
+class Solution {
+    static boolean canAttend(int[][] arr) {
+
+    Arrays.sort(arr, new Comparator<int[]>() {
+
+    
+    public int compare(int[] a, int[] b) {
+        return Integer.compare(a[0], b[0]);
+       }
+    });
+  
+         
+        int n = arr.length;
+        
+        for ( int i = 0; i < n-1; i++){
+            
+            if ( arr[i][1] > arr[i+1][0]){
+                return false;
+            }
+        }
+        return true;
+    }
+}
