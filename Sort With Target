@@ -1,0 +1,21 @@
+class Solution {
+    // Non-static method, so you need to call it on an instance of the class
+    public void nearlySorted(int[] arr, int k) {
+        PriorityQueue<Integer> sb = new PriorityQueue<>();
+        
+        
+        for ( int i = 0; i < k + 1; i++){
+            sb.add(arr[i]);
+        }
+        int j = 0;
+        for ( int i = k + 1; i < arr.length; i++){
+            arr[j] = sb.poll();
+            sb.add(arr[i]);
+            j++;
+        }
+        while ( !(sb.isEmpty())){
+            arr[j] = sb.poll();
+            j++;
+        }
+    }
+}
