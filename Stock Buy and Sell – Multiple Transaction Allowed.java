@@ -28,3 +28,19 @@ class Solution {
         return total;
     }
 }
+
+// more simple approach
+// 100,180,260,310 we can say that 310-100=210 is same as 180-100+260-180+310-260 = 210
+
+class Solution {
+    public int maximumProfit(int prices[]) {
+        int total = 0;
+        for (int i = 1; i < prices.length; i++) {
+            // If the price increases from the previous day, we make a profit
+            if (prices[i] > prices[i - 1]) {
+                total += prices[i] - prices[i - 1];
+            }
+        }
+        return total;
+    }
+}
